@@ -1,6 +1,7 @@
 import smbus
 import time
 
+
 bus = smbus.SMBus(1)
 
 #addr
@@ -21,5 +22,5 @@ time.sleep(1)
 
 #backward
 bus.write_byte(action,RECULE)
-time.sleep(1)
+time.sleep(2)
 print 'done.'
