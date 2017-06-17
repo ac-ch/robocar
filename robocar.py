@@ -13,6 +13,11 @@ import cv2
 # list of tracked points
 greenLower = (29, 86, 6)
 greenUpper = (64, 255, 255)
+#redLower = (0, 50, 50)
+#redUpper = (10, 255, 255)
+#redLower2 = (170, 50, 50)
+#redUpper2 = (180, 255, 255)
+
 pts = deque(maxlen=64)
 
 # if a video path was not supplied, grab the reference
