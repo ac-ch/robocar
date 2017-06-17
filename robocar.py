@@ -83,6 +83,9 @@ for aframe in camera.capture_continuous(rawCapture, format="bgr", use_video_port
             cv2.circle(frame, (int(x), int(y)), int(radius),
                        (0, 255, 255), 2)
             cv2.circle(frame, center, 5, (0, 0, 255), -1)
+            text='x='+str(int(x))+',y='+str(int(y))
+            cv2.putText(frame, text,(10,30), cv2.FONT_HERSHEY_COMPLEX, 1,(255,255,255),2)
+            
             print("found ball:",x,",",y)
     # update the points queue
     pts.appendleft(center)
