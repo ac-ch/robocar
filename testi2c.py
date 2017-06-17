@@ -23,4 +23,6 @@ time.sleep(1)
 #backward
 bus.write_byte(action,RECULE)
 time.sleep(2)
+bus.close()
+
 print 'done.'
