@@ -45,7 +45,7 @@ for aframe in camera.capture_continuous(rawCapture, format="bgr", use_video_port
 
     # resize the frame, blur it, and convert it to the HSV
     # color space
-    frame = imutils.resize(frame, width=600)
+    frame = imutils.resize(frame, width=640)
     # blurred = cv2.GaussianBlur(frame, (11, 11), 0)
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
@@ -77,7 +77,7 @@ for aframe in camera.capture_continuous(rawCapture, format="bgr", use_video_port
         center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
 
         # only proceed if the radius meets a minimum size
-        if radius > 15:
+        if radius > 20:
             # draw the circle and centroid on the frame,
             # then update the list of tracked points
             cv2.circle(frame, (int(x), int(y)), int(radius),
