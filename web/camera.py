@@ -100,7 +100,8 @@ class Camera(object):
                 thickness = int(np.sqrt(64 / float(i + 1)) * 2.5)
                 cv2.line(imgframe, pts[i - 1], pts[i], (0, 0, 255), thickness)
                 pts.pop()
-                
-            cls.frame=imgframe
+            
+            ret, jpeg = cv2.imencode('.jpg', imgframe)
+            cls.frame=jpeg
             
         cls.thread = None
