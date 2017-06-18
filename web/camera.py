@@ -5,7 +5,6 @@ import cv2
 from collections import deque
 from picamera.array import PiRGBArray
 from picamera import PiCamera
-import io
 import threading
 
 redLower0 = (0, 50, 50)
@@ -21,7 +20,7 @@ class Camera(object):
     frame = None  # current frame is stored here by background thread
     last_access = 0  # time of last client access to the camera
     
-    def __init__(self):
+    def initialize(self):
         if Camera.thread is None:
             # start background frame thread
             Camera.thread = threading.Thread(target=self._thread)
