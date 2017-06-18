@@ -101,8 +101,9 @@ class Camera(object):
                 cv2.line(imgframe, pts[i - 1], pts[i], (0, 0, 255), thickness)
                 pts.pop()
             
-            ret, jpeg = cv2.imencode('.jpg', imgframe)
-            cls.frame=jpeg.tobytes()
+            cls.frame=imgframe
+            # ret, jpeg = cv2.imencode('.jpg', imgframe)
+            # cls.frame=jpeg.tobytes()
             
             rawCapture.truncate(0)
             
