@@ -78,8 +78,7 @@ class Camera(object):
                 cv2.line(frame, pts[i - 1], pts[i], (0, 0, 255), thickness)
                 pts.pop()        
 
-        # We are using Motion JPEG, but OpenCV defaults to capture raw images,
-        # so we must encode it into JPEG in order to correctly display the
-        # video stream.
-        ret, jpeg = cv2.imencode('.jpg', frame)
-        return jpeg.tobytes()
+            # We are using Motion JPEG, but OpenCV defaults to capture raw images,
+            # so we must encode it into JPEG in order to correctly display the video stream.
+            ret, jpeg = cv2.imencode('.jpg', frame)
+            return jpeg.tobytes()
