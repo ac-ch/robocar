@@ -102,7 +102,7 @@ class Camera(object):
                 pts.pop()
             
             ret, jpeg = cv2.imencode('.jpg', imgframe)
-            cls.frame=jpeg
+            cls.frame=jpeg.tobytes()
             
             rawCapture.truncate(0)
             
