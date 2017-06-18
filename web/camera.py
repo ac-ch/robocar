@@ -104,4 +104,6 @@ class Camera(object):
             ret, jpeg = cv2.imencode('.jpg', imgframe)
             cls.frame=jpeg
             
+            rawCapture.truncate(0)
+            
         cls.thread = None
