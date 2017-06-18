@@ -58,9 +58,9 @@ class Camera(object):
             
             # store frame
             stream.seek(0)
-            imgframe= stream.read()
+            aframe= stream.read()
                 
-            # imgframe=aframe.array
+            imgframe=aframe.array
             blurred = cv2.GaussianBlur(imgframe, (11, 11), 0)
             hsv = cv2.cvtColor(imgframe, cv2.COLOR_BGR2HSV)
             mask0 = cv2.inRange(hsv, redLower0, redUpper0)
