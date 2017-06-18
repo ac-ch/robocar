@@ -102,6 +102,6 @@ class Camera(object):
                 cv2.line(imgframe, pts[i - 1], pts[i], (0, 0, 255), thickness)
                 pts.pop()
                 
-           cls.frame=imgframe
-                
+            cls.frame=imgframe
+            
         cls.thread = None
