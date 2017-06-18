@@ -2,6 +2,7 @@ import time
 import numpy as np
 import imutils
 import cv2
+import io
 from collections import deque
 from picamera.array import PiRGBArray
 from picamera import PiCamera
@@ -46,15 +47,20 @@ class Camera(object):
         camera.framerate=32
         camera.hflip = True
         camera.vflip = True            
-        rawCapture = PiRGBArray(camera, size=(640, 480))
+        #rawCapture = PiRGBArray(camera, size=(640, 480))
 
         # let camera warm up
         camera.start_preview()
         time.sleep(2)
 
-        for aframe in camera.capture_continuous(rawCapture, 'bgr',
-                                                 use_video_port=True):
-            imgframe=aframe.array
+        stream = io.BytesIO()
+        for foo in camera.capture_continuous(stream, format='jpeg', use_video_port=True):
+            
+            # store frame
+            stream.seek(0)
+            imgframe= stream.read()
+                
+            # imgframe=aframe.array
             blurred = cv2.GaussianBlur(imgframe, (11, 11), 0)
             hsv = cv2.cvtColor(imgframe, cv2.COLOR_BGR2HSV)
             mask0 = cv2.inRange(hsv, redLower0, redUpper0)
@@ -103,5 +109,9 @@ class Camera(object):
             
             ret, jpeg = cv2.imencode('.jpg', imgframe)
             cls.frame=jpeg
+            
+            # reset stream for next frame
+            stream.seek(0)
+            stream.truncate()
             
         cls.thread = None
